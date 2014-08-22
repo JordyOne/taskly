@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "task_lists#index"
+  root to: "task_lists#index"
   get "signin" => "sessions#new", as: :signin
   post "signin" => "sessions#create"
   get "signout" => "sessions#destroy", as: :signout
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # put "create_task/:id" => "task_lists#add_task_page"
 
   resources :task_lists do
-    resources :task
+    resources :tasks
   end
 
 

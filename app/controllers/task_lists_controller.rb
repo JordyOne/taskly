@@ -7,6 +7,7 @@ class TaskListsController < ApplicationController
 
   def index
     @task_lists = TaskList.order(:name)
+    @tasks = Task.all
   end
 
   def show
@@ -16,8 +17,9 @@ class TaskListsController < ApplicationController
 
   def create
     @task_list = TaskList.create(name: params[:task_list][:name])
-    if @task_list.valid?
+    if @task_list.save
       flash[:notice] = "Task List was created successfully!"
+
       redirect_to "/"
     else
       flash[:notice] = @task_list.errors.full_messages.join(", ")

@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<p>
+  <%= form_for @task, url: task_list_tasks_path do |f| %>
+      <%= f.label "New Task Name" %>
+      <%= f.text_field :name %>
+
+      <%= f.label "Date Created" %>
+      <%= f.text_field  :date_created, class: "datepicker" %>
+      <%  f.hidden_field :task_list_id, :value => @task_list_id %>
+      <%= f.submit 'Create New Task List' %>
+  <% end %>
+</p>
